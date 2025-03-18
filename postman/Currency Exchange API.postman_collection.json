@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "af91c0c0-00e0-4aea-93b6-01916f610094",
+		"name": "Currency Exchange API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10466288"
+	},
+	"item": [
+		{
+			"name": "exchange-rate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/exchange-rate?baseCurrency=EUR&targetCurrency=USD&amount=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exchange-rate"
+					],
+					"query": [
+						{
+							"key": "baseCurrency",
+							"value": "EUR"
+						},
+						{
+							"key": "targetCurrency",
+							"value": "USD"
+						},
+						{
+							"key": "amount",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
