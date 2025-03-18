@@ -42,7 +42,7 @@ public class CurrencyService {
         if (response.getStatusCode().is2xxSuccessful()) {
 
             // Deserialize the JSON response using Jackson into an ExchangeRateDTO object
-            ExchangeRateDTO exchangeRateDTO = null;
+            ExchangeRateDTO exchangeRateDTO;
 
             try {
 
