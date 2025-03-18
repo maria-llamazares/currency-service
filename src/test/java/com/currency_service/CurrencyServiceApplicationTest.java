@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CurrencyServiceApplicationTests {
+class CurrencyServiceApplicationTest {
 
 	@Test
 	void contextLoads() {
+		CurrencyServiceApplication.main(new String[]{});
 	}
-
 }
