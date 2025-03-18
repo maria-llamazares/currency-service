@@ -4,22 +4,21 @@ import com.currency_service.dto.ExchangeRateDTO;
 import com.currency_service.error.CustomException;
 import com.currency_service.response.CurrencyResponse;
 import com.currency_service.utils.Constants;
+import com.currency_service.utils.CurrencyUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-import org.junit.jupiter.api.BeforeEach;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.*;
 
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -34,10 +33,8 @@ class CurrencyServiceTest {
     @Mock
     private ObjectMapper objectMapper;
 
-    @BeforeEach
-    void setUp() {
-        Mockito.reset(restTemplate);
-    }
+    @Mock
+    private CurrencyUtils currencyUtils;
 
     @Test
     void testGetExchangeRate_OK() {
@@ -45,6 +42,9 @@ class CurrencyServiceTest {
         String baseCurrency = "EUR";
         String targetCurrency = "USD";
         double amount = 100.0;
+
+        doNothing().when(currencyUtils).validateCurrency("EUR");
+        doNothing().when(currencyUtils).validateCurrency("USD");
 
         String apiUrl = "https://v6.exchangerate-api.com/v6/7366f8e7412617dbeeeeb3b9/latest/" + baseCurrency;
         ResponseEntity<String> responseEntity = new ResponseEntity<>("", HttpStatus.OK);
